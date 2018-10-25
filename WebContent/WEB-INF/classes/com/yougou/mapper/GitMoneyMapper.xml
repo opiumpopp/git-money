@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yougou.mapper.GitMoneyMapper">
+	<resultMap type="com.yougou.pojo.GitMoney" id="gitMoney">
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="money" column="money"/>
+	</resultMap>
+
+	<!-- 查询所有的数据 -->
+	<select id="selectGitMoneys" resultMap="gitMoney">
+		SELECT `id`,`name`,`money` FROM `git_money`
+	</select>
+
+	<!--根据id查询数据-->
+	<select id="getGitMoneyById" parameterType="string" resultMap="gitMoney">
+		SELECT `id`,`name`,`money` FROM `git_money` WHERE id = #{id}
+	</select>
+
+	<!--根据姓名查询数据-->
+	<select id="getGitMoneyByName" parameterType="string" resultMap="gitMoney">
+		SELECT `id`,`name`,`money` FROM `git_money` WHERE name = #{name}
+	</select>
+
+	<!--根据id删除数据-->
+	<delete id="deleteGitMoneyById" parameterType="string">
+		DELETE FROM `git_money` WHERE id = #{id}
+	</delete>
+</mapper>
