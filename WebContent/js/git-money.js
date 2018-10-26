@@ -55,7 +55,16 @@ $(function() {
 					area: ["500px", "300px"],
 					btn: ["修改", "取消"],
 					yes: function() {
-						alert("修改数据");
+						var id = $("#queryId").val();
+						var name = $("#updateName").val();
+						var money = $("#updateMoney").val();
+						var obj = {"id":id,"name":name,"money":money};
+						var objStr = JSON.stringify(obj);
+						var gitMoney = JSON.parse(objStr);
+						$.post("update-git-money.action",gitMoney,function(data) {
+							mmGrid.load();
+							layer.closeAll();
+						});
 					}
 				});
 			});

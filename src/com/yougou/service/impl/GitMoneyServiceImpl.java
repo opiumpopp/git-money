@@ -36,6 +36,11 @@ public class GitMoneyServiceImpl implements GitMoneyService {
 	}
 
 	@Override
+	public void updateGitMoney(GitMoney gitMoney) {
+		gitMoneyMapper.updateGitMoney(gitMoney);
+	}
+
+	@Override
 	public int deleteGitMoneyById(String id) {
 		return gitMoneyMapper.deleteGitMoneyById(id);
 	}

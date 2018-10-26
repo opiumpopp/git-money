@@ -7,6 +7,15 @@
 		<result property="money" column="money"/>
 	</resultMap>
 
+	<sql id="set">
+		<if test="name != null and name != ''">
+			name = #{name},
+		</if>
+		<if test="money != null and money != ''">
+			money = #{money}
+		</if>
+	</sql>
+	
 	<!-- 查询所有的数据 -->
 	<select id="selectGitMoneys" resultMap="gitMoney">
 		SELECT `id`,`name`,`money` FROM `git_money`
@@ -21,6 +30,11 @@
 	<select id="getGitMoneyByName" parameterType="string" resultMap="gitMoney">
 		SELECT `id`,`name`,`money` FROM `git_money` WHERE name = #{name}
 	</select>
+
+	<!--根据id修改数据-->
+	<update id="updateGitMoney" parameterType="gitMoney">
+		UPDATE `git_money` <set><include refid="set"/></set> WHERE id = #{id}
+	</update>
 
 	<!--根据id删除数据-->
 	<delete id="deleteGitMoneyById" parameterType="string">

@@ -77,6 +77,16 @@ public class GitMoneyController {
 	}
 
 	/**
+	 * 保存修改后的结果
+	 * @param gitMoney 修改后的gitMoney
+     */
+	@RequestMapping("update-git-money")
+	@ResponseBody
+	public void updateGitMoney(GitMoney gitMoney) {
+		gitMoneyService.updateGitMoney(gitMoney);
+	}
+
+	/**
 	 * 删除
 	 * @param id 主键id
 	 * @return 删除的数量

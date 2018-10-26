@@ -30,6 +30,12 @@ public interface GitMoneyMapper {
 	GitMoney getGitMoneyByName(String name);
 
 	/**
+	 * 修改gitMoney
+	 * @param gitMoney 修改后的gitMoney
+	 */
+	void updateGitMoney(GitMoney gitMoney);
+
+	/**
 	 * 根据id删除数据
 	 * @param id 主键id
 	 * @return 删除的数量
