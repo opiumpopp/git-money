@@ -25,7 +25,26 @@ $(function() {
 	 * 新增
 	 */
 	$("#add").on("click",function() {
-		alert("新增一条记录");
+		$.get("add-git-money-page.action",function(data) {
+			layer.open({
+				title:"新增GitMoney",
+				type:1,
+				content:data,
+				area: ["500px", "300px"],
+				btn:["新增", "取消"],
+				yes: function() {
+					var name = $("#addName").val();
+					var money = parseInt($("#addMoney").val());
+					var obj = {"name":name,"money":money};
+					var objStr = JSON.stringify(obj);
+					var gitMoney = JSON.parse(objStr);
+					$.post("add-git-money.action",gitMoney,function(data) {
+						mmGrid.load();
+						layer.closeAll();
+					});
+				}
+			});
+		});
 	});
 
 	mmGrid.on("cellSelected",function(e, item, rowIndex, colIndex) {
@@ -47,7 +66,7 @@ $(function() {
 			 * 修改
 			 */
 		}else if(id == "update") {
-			$.get("get-update-git-money.action?id="+item.id,function(data) {
+			$.get("update-git-money-page.action?id="+item.id,function(data) {
 				layer.open({
 					title:"修改GitMoney",
 					type:1,
@@ -81,6 +100,9 @@ $(function() {
 		}
 	});
 
+	/**
+	 * 根据姓名查询
+	 */
 	$("#select").on("click",function() {
 		var name = $("#name").val();
 		mmGrid.load({"name":name});

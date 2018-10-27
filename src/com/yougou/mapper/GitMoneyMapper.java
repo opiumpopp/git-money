@@ -16,6 +16,12 @@ public interface GitMoneyMapper {
 	List<GitMoney> selectGitMoneys();
 
 	/**
+	 * 新增gitMoney
+	 * @param gitMoney 新增的gitMoney
+	 */
+	void insertGitMoney(GitMoney gitMoney);
+
+	/**
 	 * 根据id查询数据
 	 * @param id 主键id
 	 * @return 一条记录

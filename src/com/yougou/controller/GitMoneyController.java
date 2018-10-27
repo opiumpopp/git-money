@@ -51,6 +51,25 @@ public class GitMoneyController {
 	}
 
 	/**
+	 * 进入新增页面
+	 * @return 新增页面
+     */
+	@RequestMapping("add-git-money-page")
+	public String addGitMoneyPage() {
+		return "add-git-money-page";
+	}
+
+	/**
+	 * 保存新增记录
+	 * @param gitMoney
+     */
+	@RequestMapping("add-git-money")
+	@ResponseBody
+	public void addGitMoney(GitMoney gitMoney) {
+		gitMoneyService.insertGitMoney(gitMoney);
+	}
+
+	/**
 	 * 查看
 	 * @param id 主键id
 	 * @param model 视图模型
@@ -69,11 +88,11 @@ public class GitMoneyController {
 	 * @param model 视图模型
      * @return
      */
-	@RequestMapping("get-update-git-money")
+	@RequestMapping("update-git-money-page")
 	public String getUpdateGitMoney(String id, Model model) {
 		GitMoney gitMoney = gitMoneyService.getGitMoneyById(id);
 		model.addAttribute("gitMoney",gitMoney);
-		return "get-update-git-money";
+		return "update-git-money-page";
 	}
 
 	/**

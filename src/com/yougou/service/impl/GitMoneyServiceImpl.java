@@ -2,6 +2,7 @@ package com.yougou.service.impl;
 
 import java.util.List;
 
+import com.yougou.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,13 @@ public class GitMoneyServiceImpl implements GitMoneyService {
 	@Override
 	public List<GitMoney> selectGitMoneys() {
 		return gitMoneyMapper.selectGitMoneys();
+	}
+
+	@Override
+	public void insertGitMoney(GitMoney gitMoney) {
+		String id = UUIDUtil.getUUID();
+		gitMoney.setId(id);
+		gitMoneyMapper.insertGitMoney(gitMoney);
 	}
 
 	@Override

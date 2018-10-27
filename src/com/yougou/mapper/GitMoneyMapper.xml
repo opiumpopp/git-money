@@ -21,6 +21,12 @@
 		SELECT `id`,`name`,`money` FROM `git_money`
 	</select>
 
+	<!--新增一记录-->
+	<!--sql语句中的insert语句，需要把字段用括号()包起来 (`id`,`name`,`money`)-->
+	<insert id="insertGitMoney" parameterType="gitMoney">
+		INSERT INTO `git_money` (`id`,`name`,`money`) VALUES (#{id},#{name},#{money})
+	</insert>
+
 	<!--根据id查询数据-->
 	<select id="getGitMoneyById" parameterType="string" resultMap="gitMoney">
 		SELECT `id`,`name`,`money` FROM `git_money` WHERE id = #{id}
