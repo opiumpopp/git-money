@@ -22,6 +22,7 @@
 	</select>
 
 	<!--新增一记录-->
+	<!--sql语句中的insert语句，需要把字段用括号()包起来 (`id`,`name`,`money`)-->
 	<insert id="insertGitMoney" parameterType="gitMoney">
 		INSERT INTO `git_money` (`id`,`name`,`money`) VALUES (#{id},#{name},#{money})
 	</insert>

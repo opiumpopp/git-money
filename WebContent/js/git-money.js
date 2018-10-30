@@ -18,7 +18,10 @@ $(function() {
 		nowrap:true,
 		params:function() {
 			return {"name":name};
-		}
+		},
+		plugins:[
+			$('#page').mmPaginator({})
+		]
 	});
 
 	/**

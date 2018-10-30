@@ -24,8 +24,6 @@ public class GitMoneyServiceImpl implements GitMoneyService {
 	
 	@Override
 	public List<GitMoney> selectGitMoneys() {
-		//从第一条数据开始，显示5条记录
-		PageHelper.startPage(1, 5);
 		return gitMoneyMapper.selectGitMoneys();
 	}
 
