@@ -3,6 +3,8 @@ package com.yougou.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.github.pagehelper.PageInfo;
+import com.yougou.util.PageModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,16 +40,12 @@ public class GitMoneyController {
      */
 	@RequestMapping("select-all-git-money")
 	@ResponseBody
-	public List<GitMoney> selectAllGitMoney(String name) {
-		List<GitMoney> list = new ArrayList<GitMoney>();
-		if (name == null || name == "") {
-			List<GitMoney> gitMoneys = gitMoneyService.selectGitMoneys();
-			list.addAll(gitMoneys);
-		} else {
-			GitMoney gitMoney = gitMoneyService.getGitMoneyByName(name);
-			list.add(gitMoney);
-		}
-		return list;
+	public PageModel<GitMoney> selectAllGitMoney(String name) {
+		PageInfo<GitMoney> pageInfo = gitMoneyService.selectGitMoneys();
+		int total = (int)pageInfo.getTotal();
+		List<GitMoney> list = pageInfo.getList();
+		PageModel<GitMoney> pageModel = new PageModel<GitMoney>(1, 20, total, list);
+		return pageModel;
 	}
 
 	/**

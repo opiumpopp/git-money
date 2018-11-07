@@ -3,6 +3,7 @@ package com.yougou.service.impl;
 import java.util.List;
 
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.yougou.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,8 +24,11 @@ public class GitMoneyServiceImpl implements GitMoneyService {
 	private GitMoneyMapper gitMoneyMapper;
 	
 	@Override
-	public List<GitMoney> selectGitMoneys() {
-		return gitMoneyMapper.selectGitMoneys();
+	public PageInfo<GitMoney> selectGitMoneys() {
+		PageHelper.startPage(1, 20);
+		List<GitMoney> list = gitMoneyMapper.selectGitMoneys();
+		PageInfo<GitMoney> pageInfo = new PageInfo<GitMoney>(list);
+		return pageInfo;
 	}
 
 	@Override

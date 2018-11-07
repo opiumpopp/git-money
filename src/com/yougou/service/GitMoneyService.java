@@ -1,7 +1,6 @@
 package com.yougou.service;
 
-import java.util.List;
-
+import com.github.pagehelper.PageInfo;
 import com.yougou.pojo.GitMoney;
 
 /**
@@ -14,7 +13,7 @@ public interface GitMoneyService {
 	 * 查询所有的数据
 	 * @return 数据列表
 	 */
-	List<GitMoney> selectGitMoneys();
+	PageInfo<GitMoney> selectGitMoneys();
 
 	/**
 	 * 新增gitMoney
