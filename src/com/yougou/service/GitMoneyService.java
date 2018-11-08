@@ -14,7 +14,7 @@ public interface GitMoneyService {
 	 * 查询所有的数据
 	 * @return 数据列表
 	 */
-	PageInfo<GitMoney> selectGitMoneys(PageModel pageModel);
+	PageInfo<GitMoney> selectGitMoneys(PageModel pageModel, String name);
 
 	/**
 	 * 新增gitMoney
@@ -28,13 +28,6 @@ public interface GitMoneyService {
 	 * @return 一条记录
      */
 	GitMoney getGitMoneyById(String id);
-
-	/**
-	 * 根据姓名查询数据
-	 * @param name 姓名
-	 * @return 一条数据
-     */
-	GitMoney getGitMoneyByName(String name);
 
 	/**
 	 * 修改gitMoney

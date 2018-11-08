@@ -1,15 +1,12 @@
 package com.yougou.controller;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import com.github.pagehelper.PageInfo;
 import com.yougou.util.PageModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.yougou.pojo.GitMoney;
 import com.yougou.service.GitMoneyService;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -40,8 +37,8 @@ public class GitMoneyController {
      */
 	@RequestMapping("select-all-git-money")
 	@ResponseBody
-	public PageModel<GitMoney> selectAllGitMoney(PageModel pageModel) {
-		PageInfo<GitMoney> pageInfo = gitMoneyService.selectGitMoneys(pageModel);
+	public PageModel<GitMoney> selectAllGitMoney(PageModel pageModel, String name) {
+		PageInfo<GitMoney> pageInfo = gitMoneyService.selectGitMoneys(pageModel, name);
 		int total = (int)pageInfo.getTotal();
 		List<GitMoney> list = pageInfo.getList();
 		int pageNum = pageInfo.getPageNum();

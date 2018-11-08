@@ -1,8 +1,8 @@
 package com.yougou.mapper;
 
 import java.util.List;
-
 import com.yougou.pojo.GitMoney;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * 礼钱mapper接口
@@ -13,7 +13,7 @@ public interface GitMoneyMapper {
 	 * 查询所有的数据
 	 * @return
 	 */
-	List<GitMoney> selectGitMoneys();
+	List<GitMoney> selectGitMoneys(@Param("name") String name);
 
 	/**
 	 * 新增gitMoney
@@ -27,13 +27,6 @@ public interface GitMoneyMapper {
 	 * @return 一条记录
 	 */
 	GitMoney getGitMoneyById(String id);
-
-	/**
-	 * 根据姓名查询数据
-	 * @param name 姓名
-	 * @return 一条数据
-	 */
-	GitMoney getGitMoneyByName(String name);
 
 	/**
 	 * 修改gitMoney

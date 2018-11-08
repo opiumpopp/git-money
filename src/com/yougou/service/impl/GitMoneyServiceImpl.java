@@ -1,14 +1,12 @@
 package com.yougou.service.impl;
 
 import java.util.List;
-
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.yougou.util.PageModel;
 import com.yougou.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.yougou.mapper.GitMoneyMapper;
 import com.yougou.pojo.GitMoney;
 import com.yougou.service.GitMoneyService;
@@ -25,9 +23,9 @@ public class GitMoneyServiceImpl implements GitMoneyService {
 	private GitMoneyMapper gitMoneyMapper;
 	
 	@Override
-	public PageInfo<GitMoney> selectGitMoneys(PageModel pageModel) {
+	public PageInfo<GitMoney> selectGitMoneys(PageModel pageModel, String name) {
 		PageHelper.startPage(pageModel.getPage(), pageModel.getLimit());
-		List<GitMoney> list = gitMoneyMapper.selectGitMoneys();
+		List<GitMoney> list = gitMoneyMapper.selectGitMoneys(name);
 		PageInfo<GitMoney> pageInfo = new PageInfo<GitMoney>(list);
 		return pageInfo;
 	}
@@ -42,11 +40,6 @@ public class GitMoneyServiceImpl implements GitMoneyService {
 	@Override
 	public GitMoney getGitMoneyById(String id) {
 		return gitMoneyMapper.getGitMoneyById(id);
-	}
-
-	@Override
-	public GitMoney getGitMoneyByName(String name) {
-		return gitMoneyMapper.getGitMoneyByName(name);
 	}
 
 	@Override
