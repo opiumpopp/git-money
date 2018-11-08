@@ -2,6 +2,7 @@ package com.yougou.service;
 
 import com.github.pagehelper.PageInfo;
 import com.yougou.pojo.GitMoney;
+import com.yougou.util.PageModel;
 
 /**
  * 礼钱service接口
@@ -13,7 +14,7 @@ public interface GitMoneyService {
 	 * 查询所有的数据
 	 * @return 数据列表
 	 */
-	PageInfo<GitMoney> selectGitMoneys();
+	PageInfo<GitMoney> selectGitMoneys(PageModel pageModel);
 
 	/**
 	 * 新增gitMoney

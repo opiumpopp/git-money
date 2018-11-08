@@ -40,12 +40,14 @@ public class GitMoneyController {
      */
 	@RequestMapping("select-all-git-money")
 	@ResponseBody
-	public PageModel<GitMoney> selectAllGitMoney(String name) {
-		PageInfo<GitMoney> pageInfo = gitMoneyService.selectGitMoneys();
+	public PageModel<GitMoney> selectAllGitMoney(PageModel pageModel) {
+		PageInfo<GitMoney> pageInfo = gitMoneyService.selectGitMoneys(pageModel);
 		int total = (int)pageInfo.getTotal();
 		List<GitMoney> list = pageInfo.getList();
-		PageModel<GitMoney> pageModel = new PageModel<GitMoney>(1, 20, total, list);
-		return pageModel;
+		int pageNum = pageInfo.getPageNum();
+		int pageSize = pageInfo.getPageSize();
+		PageModel<GitMoney> pm = new PageModel<GitMoney>(pageNum, pageSize, total, list);
+		return pm;
 	}
 
 	/**

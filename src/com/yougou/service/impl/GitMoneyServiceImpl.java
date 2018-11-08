@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.yougou.util.PageModel;
 import com.yougou.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,8 +25,8 @@ public class GitMoneyServiceImpl implements GitMoneyService {
 	private GitMoneyMapper gitMoneyMapper;
 	
 	@Override
-	public PageInfo<GitMoney> selectGitMoneys() {
-		PageHelper.startPage(1, 20);
+	public PageInfo<GitMoney> selectGitMoneys(PageModel pageModel) {
+		PageHelper.startPage(pageModel.getPage(), pageModel.getLimit());
 		List<GitMoney> list = gitMoneyMapper.selectGitMoneys();
 		PageInfo<GitMoney> pageInfo = new PageInfo<GitMoney>(list);
 		return pageInfo;
