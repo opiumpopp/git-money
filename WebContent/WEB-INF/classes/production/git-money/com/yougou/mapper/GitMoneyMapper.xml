@@ -7,6 +7,19 @@
 		<result property="money" column="money"/>
 	</resultMap>
 
+	<!--数据列-->
+	<sql id="column">
+		id, name, money
+	</sql>
+
+	<!--查询条件-->
+	<sql id="condition">
+		<if test="name != null and name != ''">
+			and name = #{name}
+		</if>
+	</sql>
+
+	<!--设置条件-->
 	<sql id="set">
 		<if test="name != null and name != ''">
 			name = #{name},
@@ -18,7 +31,7 @@
 	
 	<!-- 查询所有的数据 -->
 	<select id="selectGitMoneys" resultMap="gitMoney">
-		SELECT `id`,`name`,`money` FROM `git_money`
+		SELECT <include refid="column" /> FROM `git_money` WHERE 1=1 <include refid="condition" />
 	</select>
 
 	<!--新增一记录-->
@@ -29,12 +42,7 @@
 
 	<!--根据id查询数据-->
 	<select id="getGitMoneyById" parameterType="string" resultMap="gitMoney">
-		SELECT `id`,`name`,`money` FROM `git_money` WHERE id = #{id}
-	</select>
-
-	<!--根据姓名查询数据-->
-	<select id="getGitMoneyByName" parameterType="string" resultMap="gitMoney">
-		SELECT `id`,`name`,`money` FROM `git_money` WHERE name = #{name}
+		SELECT <include refid="column" /> FROM `git_money` WHERE id = #{id}
 	</select>
 
 	<!--根据id修改数据-->

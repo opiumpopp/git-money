@@ -14,7 +14,7 @@ public interface GitMoneyService {
 	 * 查询所有的数据
 	 * @return 数据列表
 	 */
-	PageInfo<GitMoney> selectGitMoneys(PageModel pageModel, String name);
+	PageInfo<GitMoney> selectGitMoneys(PageModel pageModel, GitMoney gitMoney);
 
 	/**
 	 * 新增gitMoney

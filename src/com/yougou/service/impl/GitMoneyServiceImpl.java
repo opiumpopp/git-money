@@ -23,9 +23,9 @@ public class GitMoneyServiceImpl implements GitMoneyService {
 	private GitMoneyMapper gitMoneyMapper;
 	
 	@Override
-	public PageInfo<GitMoney> selectGitMoneys(PageModel pageModel, String name) {
+	public PageInfo<GitMoney> selectGitMoneys(PageModel pageModel, GitMoney gitMoney) {
 		PageHelper.startPage(pageModel.getPage(), pageModel.getLimit());
-		List<GitMoney> list = gitMoneyMapper.selectGitMoneys(name);
+		List<GitMoney> list = gitMoneyMapper.selectGitMoneys(gitMoney);
 		PageInfo<GitMoney> pageInfo = new PageInfo<GitMoney>(list);
 		return pageInfo;
 	}

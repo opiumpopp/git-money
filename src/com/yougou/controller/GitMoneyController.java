@@ -37,8 +37,8 @@ public class GitMoneyController {
      */
 	@RequestMapping("select-all-git-money")
 	@ResponseBody
-	public PageModel<GitMoney> selectAllGitMoney(PageModel pageModel, String name) {
-		PageInfo<GitMoney> pageInfo = gitMoneyService.selectGitMoneys(pageModel, name);
+	public PageModel<GitMoney> selectAllGitMoney(PageModel pageModel, GitMoney gitMoney) {
+		PageInfo<GitMoney> pageInfo = gitMoneyService.selectGitMoneys(pageModel, gitMoney);
 		int total = (int)pageInfo.getTotal();
 		List<GitMoney> list = pageInfo.getList();
 		int pageNum = pageInfo.getPageNum();
