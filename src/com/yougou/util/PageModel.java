@@ -4,7 +4,6 @@ import java.util.List;
 
 /**
  * 分页对象(基于mmGrid定制)
- * @author wang.zf
  */
 public class PageModel<GitMoney> {
 
